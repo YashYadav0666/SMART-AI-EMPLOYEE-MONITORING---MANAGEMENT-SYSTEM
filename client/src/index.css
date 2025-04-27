@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Modern UI Color Palette */
+  --background: 210 50% 98%;
+  --foreground: 220 40% 10%;
+  --muted: 215 15% 95%;
+  --muted-foreground: 220 10% 40%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 40% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 40% 10%;
+  --border: 215 20% 90%;
+  --input: 215 20% 90%;
+  
+  /* Primary - Modern Blue */
+  --primary: 220 70% 50%;
+  --primary-foreground: 210 40% 98%;
+  
+  /* Secondary - Soft Purple */
+  --secondary: 250 30% 60%;
+  --secondary-foreground: 210 40% 98%;
+  
+  /* Accent - Vibrant Teal */
+  --accent: 175 70% 45%;
+  --accent-foreground: 0 0% 100%;
+  
+  /* Status Colors */
+  --working: 142 70% 45%;      /* Emerald Green */
+  --idle: 40 90% 60%;          /* Amber Yellow */
+  --sleeping: 230 60% 60%;     /* Blue */
+  --moving: 326 70% 50%;       /* Magenta */
+  --inactive: 220 10% 70%;     /* Gray */
+  
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --ring: 215 70% 50%;
+  --radius: 0.625rem;
+}
+
+.dark {
+  --background: 220 40% 10%;
+  --foreground: 210 30% 98%;
+  --muted: 220 30% 20%;
+  --muted-foreground: 220 20% 70%;
+  --popover: 220 45% 12%;
+  --popover-foreground: 210 30% 98%;
+  --card: 220 45% 12%;
+  --card-foreground: 210 30% 98%;
+  --border: 220 30% 20%;
+  --input: 220 30% 20%;
+  
+  /* Primary - Bright Blue */
+  --primary: 215 90% 60%;
+  --primary-foreground: 210 40% 98%;
+  
+  /* Secondary - Soft Purple */
+  --secondary: 250 40% 65%;
+  --secondary-foreground: 210 40% 98%;
+  
+  /* Accent - Vibrant Teal */
+  --accent: 170 80% 50%;
+  --accent-foreground: 0 0% 100%;
+  
+  /* Status Colors - Brighter for dark mode */
+  --working: 142 70% 50%;     /* Emerald Green */
+  --idle: 40 95% 65%;         /* Amber Yellow */
+  --sleeping: 225 70% 65%;    /* Blue */
+  --moving: 326 80% 60%;      /* Magenta */
+  --inactive: 220 15% 75%;    /* Gray */
+  
+  --destructive: 0 80% 60%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --ring: 215 80% 60%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  /* Modern Card Styles */
+  .card-modern {
+    @apply bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  /* Glass Effect */
+  .glass {
+    @apply bg-white/80 dark:bg-black/50 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+
+  /* Gradients */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary to-secondary;
+  }
+  
+  .gradient-accent {
+    @apply bg-gradient-to-r from-secondary to-accent;
+  }
+  
+  /* Custom Shadows */
+  .shadow-soft {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Status Colors */
+  .status-working {
+    @apply bg-[hsl(var(--working))];
+  }
+  
+  .status-idle {
+    @apply bg-[hsl(var(--idle))];
+  }
+  
+  .status-sleeping {
+    @apply bg-[hsl(var(--sleeping))];
+  }
+  
+  .status-moving {
+    @apply bg-[hsl(var(--moving))];
+  }
+  
+  .status-inactive {
+    @apply bg-[hsl(var(--inactive))];
+  }
+  
+  /* Status Text Colors */
+  .text-status-working {
+    @apply text-[hsl(var(--working))];
+  }
+  
+  .text-status-idle {
+    @apply text-[hsl(var(--idle))];
+  }
+  
+  .text-status-sleeping {
+    @apply text-[hsl(var(--sleeping))];
+  }
+  
+  .text-status-moving {
+    @apply text-[hsl(var(--moving))];
+  }
+  
+  .text-status-inactive {
+    @apply text-[hsl(var(--inactive))];
+  }
+
+  /* Animation utilities */
+  .fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .slideUp {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
